@@ -1,0 +1,23 @@
+Panels:
+  - Class: rviz/Displays
+    Name: Displays
+Visualization Manager:
+  Displays:
+    - {Class: rviz/Map, Name: Dog map, Enabled: true, Topic: /dog_map}
+    - {Class: rviz/TF, Name: Dog frames, Enabled: true}
+    - {Class: rviz/Path, Name: Dog 1 path, Enabled: true, Topic: /dog1/move_base/NavfnROS/plan, Color: "20; 180; 255"}
+    - {Class: rviz/Path, Name: Dog 2 path, Enabled: true, Topic: /dog2/move_base/NavfnROS/plan, Color: "255; 150; 20"}
+    - {Class: rviz/Path, Name: Dog 3 path, Enabled: true, Topic: /dog3/move_base/NavfnROS/plan, Color: "70; 230; 100"}
+    - {Class: rviz/Path, Name: Dog 4 path, Enabled: true, Topic: /dog4/move_base/NavfnROS/plan, Color: "240; 80; 180"}
+  Global Options:
+    Fixed Frame: dog_map
+  Tools:
+    - Class: rviz/Interact
+    - Class: rviz/MoveCamera
+    - Class: rviz/Select
+    - Class: rviz/SetGoal
+      Topic: /dog1/move_base_simple/goal
+  Views:
+    Current:
+      Class: rviz/TopDownOrtho
+      Scale: 25

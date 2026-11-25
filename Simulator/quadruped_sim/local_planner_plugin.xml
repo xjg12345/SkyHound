@@ -1,0 +1,7 @@
+<library path="lib/libquadruped_gait_local_planner">
+  <class name="prometheus_quadruped_sim/GaitLocalPlanner"
+         type="prometheus_quadruped_sim::GaitLocalPlanner"
+         base_class_type="nav_core::BaseLocalPlanner">
+    <description>Forward-only path follower with swept footprint checks for the physical quadruped.</description>
+  </class>
+</library>

@@ -1,0 +1,39 @@
+<launch>
+  <arg name="gui" default="false"/>
+  <arg name="rviz" default="false"/>
+  <arg name="robot_count" default="1"/>
+  <arg name="rviz_config" value="$(eval 'team.rviz' if int(arg('robot_count')) == 4 else 'dog.rviz')"/>
+  <arg name="agent_backend" default="proxy"/>
+  <arg name="a1_mesh_dir" default=""/>
+  <arg name="dynamic_obstacle" default="false"/>
+  <arg name="guard_scan" default="scan"/>
+  <arg name="guard_odom" default="odom"/>
+  <arg name="world" value="$(find prometheus_quadruped_sim)/worlds/demo.world"/>
+  <arg name="crossing_arg" value="$(eval '--crossing ' + find('prometheus_quadruped_sim') + '/models/crossing.sdf' if arg('dynamic_obstacle') else '')"/>
+  <env name="GAZEBO_MODEL_DATABASE_URI" value=""/>
+  <env unless="$(eval arg('gui') or arg('rviz'))" name="DISPLAY" value=""/>
+  <env unless="$(eval arg('gui') or arg('rviz'))" name="WAYLAND_DISPLAY" value=""/>
+  <env unless="$(eval arg('gui') or arg('rviz'))" name="LIBGL_ALWAYS_SOFTWARE" value="1"/>
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(arg world)"/>
+    <arg name="gui" value="$(arg gui)"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="server_required" value="true"/>
+    <arg name="use_clock_frequency" value="true"/>
+    <arg name="pub_clock_frequency" value="100"/>
+  </include>
+  <include file="$(find prometheus_quadruped_sim)/launch/team.launch">
+    <arg name="robot_count" value="$(arg robot_count)"/>
+    <arg name="agent_backend" value="$(arg agent_backend)"/>
+    <arg name="guard_scan" value="$(arg guard_scan)"/>
+    <arg name="guard_odom" value="$(arg guard_odom)"/>
+  </include>
+  <node pkg="prometheus_quadruped_sim" type="bringup.py" name="quadruped_bringup" required="true"
+        output="screen" args="--world '$(arg world)' --dog '$(find prometheus_quadruped_sim)/models/dog.sdf'
+        --robot-count $(arg robot_count) --backend $(arg agent_backend)
+        --a1-mesh-dir='$(arg a1_mesh_dir)' $(arg crossing_arg)"/>
+  <node if="$(arg dynamic_obstacle)" pkg="prometheus_quadruped_sim" type="crossing.py"
+        name="crossing_controller" required="true" output="screen"/>
+  <node if="$(arg rviz)" pkg="rviz" type="rviz" name="dog_rviz"
+        args="-d $(find prometheus_quadruped_sim)/config/$(arg rviz_config)"/>
+</launch>

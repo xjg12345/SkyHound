@@ -1,0 +1,1888 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <world name="default">
+    <physics type="ode">
+      <gravity>0 0 -9.8066</gravity>
+      <ode>
+        <solver>
+          <type>quick</type>
+          <iters>10</iters>
+          <sor>1.3</sor>
+          <use_dynamic_moi_rescaling>0</use_dynamic_moi_rescaling>
+        </solver>
+        <constraints>
+          <cfm>0.0</cfm>
+          <erp>0.2</erp>
+          <contact_max_correcting_vel>100</contact_max_correcting_vel>
+          <contact_surface_layer>0.001</contact_surface_layer>
+        </constraints>
+      </ode>
+      <max_step_size>0.004</max_step_size>
+      <real_time_factor>1.0</real_time_factor>
+      <real_time_update_rate>250</real_time_update_rate>
+      <magnetic_field>6.0e-6 2.3e-5 -4.2e-5</magnetic_field>
+    </physics>
+    <gui fullscreen="0">
+      <camera name="user_camera">
+        <pose>-11.0 0.0 7.0 0 0.57 0.0</pose>
+        <view_controller>orbit</view_controller>
+      </camera>
+    </gui>
+    <light type="directional" name="sun">
+      <cast_shadows>false</cast_shadows>
+      <pose>0 0 100 0 0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.9 0.9 0.9 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>0.2 0.2 -0.9</direction>
+    </light>
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+    <model name="cylinder1">
+      <pose>4.5 0.0 1.5 0.0 0.0 0.0</pose>
+      <static>0</static>
+      <link name="link">
+        <inertial>
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.1</ixx>
+            <iyy>0.1</iyy>
+            <izz>0.1</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <cylinder>
+              <radius>0.25</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <cylinder>
+              <radius>0.2</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Green</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+      <plugin name="planar_move" filename="libgazebo_ros_planar_move.so">
+        <commandTopic>cylinder1/cmd_vel</commandTopic>
+        <odometryTopic>cylinder1/odom</odometryTopic>
+        <odometryFrame>cylinder1/odom</odometryFrame>
+        <robotBaseFrame>link</robotBaseFrame>
+        <updateRate>100</updateRate>
+      </plugin>
+    </model>
+    <model name="cylinder7">
+      <pose>10.5 4.5 1.5 0.0 0.0 0.0</pose>
+      <static>0</static>
+      <link name="link">
+        <inertial>
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.1</ixx>
+            <iyy>0.1</iyy>
+            <izz>0.1</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <cylinder>
+              <radius>0.25</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <cylinder>
+              <radius>0.2</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Green</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+      <plugin name="planar_move" filename="libgazebo_ros_planar_move.so">
+        <commandTopic>cylinder7/cmd_vel</commandTopic>
+        <odometryTopic>cylinder7/odom</odometryTopic>
+        <odometryFrame>cylinder7/odom</odometryFrame>
+        <robotBaseFrame>link</robotBaseFrame>
+        <updateRate>100</updateRate>
+      </plugin>
+    </model>
+    <model name="cylinder8">
+      <pose>13.5 4.5 2.0 0.0 0.0 0.0</pose>
+      <static>0</static>
+      <link name="link">
+        <inertial>
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.1</ixx>
+            <iyy>0.1</iyy>
+            <izz>0.1</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <cylinder>
+              <radius>0.25</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <cylinder>
+              <radius>0.2</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Green</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+      <plugin name="planar_move" filename="libgazebo_ros_planar_move.so">
+        <commandTopic>cylinder8/cmd_vel</commandTopic>
+        <odometryTopic>cylinder8/odom</odometryTopic>
+        <odometryFrame>cylinder8/odom</odometryFrame>
+        <robotBaseFrame>link</robotBaseFrame>
+        <updateRate>100</updateRate>
+      </plugin>
+    </model>
+    <model name="cylinder9">
+      <pose>16.5 4.5 2.0 0.0 0.0 0.0</pose>
+      <static>0</static>
+      <link name="link">
+        <inertial>
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.1</ixx>
+            <iyy>0.1</iyy>
+            <izz>0.1</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <cylinder>
+              <radius>0.25</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <cylinder>
+              <radius>0.2</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Green</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+      <plugin name="planar_move" filename="libgazebo_ros_planar_move.so">
+        <commandTopic>cylinder9/cmd_vel</commandTopic>
+        <odometryTopic>cylinder9/odom</odometryTopic>
+        <odometryFrame>cylinder9/odom</odometryFrame>
+        <robotBaseFrame>link</robotBaseFrame>
+        <updateRate>100</updateRate>
+      </plugin>
+    </model>
+    <model name="cylinder2">
+      <pose>7.5 3.0 2.0 0.0 0.0 0.0</pose>
+      <static>0</static>
+      <link name="link">
+        <inertial>
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.1</ixx>
+            <iyy>0.1</iyy>
+            <izz>0.1</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <cylinder>
+              <radius>0.25</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <cylinder>
+              <radius>0.2</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Green</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+      <plugin name="planar_move" filename="libgazebo_ros_planar_move.so">
+        <commandTopic>cylinder2/cmd_vel</commandTopic>
+        <odometryTopic>cylinder2/odom</odometryTopic>
+        <odometryFrame>cylinder2/odom</odometryFrame>
+        <robotBaseFrame>link</robotBaseFrame>
+        <updateRate>100</updateRate>
+      </plugin>
+    </model>
+    <model name="cylinder3">
+      <pose>7.5 -3.0 1.5 0.0 0.0 0.0</pose>
+      <static>0</static>
+      <link name="link">
+        <inertial>
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.1</ixx>
+            <iyy>0.1</iyy>
+            <izz>0.1</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <cylinder>
+              <radius>0.25</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <cylinder>
+              <radius>0.2</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Green</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+      <plugin name="planar_move" filename="libgazebo_ros_planar_move.so">
+        <commandTopic>cylinder3/cmd_vel</commandTopic>
+        <odometryTopic>cylinder3/odom</odometryTopic>
+        <odometryFrame>cylinder3/odom</odometryFrame>
+        <robotBaseFrame>link</robotBaseFrame>
+        <updateRate>100</updateRate>
+      </plugin>
+    </model>
+    <model name="cylinder4">
+      <pose>-3.0 0.0 1.5 0.0 0.0 0.0</pose>
+      <static>0</static>
+      <link name="link">
+        <inertial>
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.1</ixx>
+            <iyy>0.1</iyy>
+            <izz>0.1</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <cylinder>
+              <radius>0.25</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <cylinder>
+              <radius>0.2</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Green</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+      <plugin name="planar_move" filename="libgazebo_ros_planar_move.so">
+        <commandTopic>cylinder4/cmd_vel</commandTopic>
+        <odometryTopic>cylinder4/odom</odometryTopic>
+        <odometryFrame>cylinder4/odom</odometryFrame>
+        <robotBaseFrame>link</robotBaseFrame>
+        <updateRate>100</updateRate>
+      </plugin>
+    </model>
+    <model name="cylinder5">
+      <pose>-7.5 3.0 1.5 0.0 0.0 0.0</pose>
+      <static>0</static>
+      <link name="link">
+        <inertial>
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.1</ixx>
+            <iyy>0.1</iyy>
+            <izz>0.1</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <cylinder>
+              <radius>0.25</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <cylinder>
+              <radius>0.2</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Green</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+      <plugin name="planar_move" filename="libgazebo_ros_planar_move.so">
+        <commandTopic>cylinder5/cmd_vel</commandTopic>
+        <odometryTopic>cylinder5/odom</odometryTopic>
+        <odometryFrame>cylinder5/odom</odometryFrame>
+        <robotBaseFrame>link</robotBaseFrame>
+        <updateRate>100</updateRate>
+      </plugin>
+    </model>
+    <model name="cylinder6">
+      <pose>-7.5 -3.0 1.5 0.0 0.0 0.0</pose>
+      <static>0</static>
+      <link name="link">
+        <inertial>
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.1</ixx>
+            <iyy>0.1</iyy>
+            <izz>0.1</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <cylinder>
+              <radius>0.25</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <cylinder>
+              <radius>0.2</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Green</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+      <plugin name="planar_move" filename="libgazebo_ros_planar_move.so">
+        <commandTopic>cylinder6/cmd_vel</commandTopic>
+        <odometryTopic>cylinder6/odom</odometryTopic>
+        <odometryFrame>cylinder6/odom</odometryFrame>
+        <robotBaseFrame>link</robotBaseFrame>
+        <updateRate>100</updateRate>
+      </plugin>
+    </model>
+    <model name="cylinder4_clone_0">
+      <pose>-2.96988 6.0105450000000005 1.5 0.0 -0.0 0.0</pose>
+      <static>0</static>
+      <link name="link">
+        <inertial>
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.1</ixx>
+            <iyy>0.1</iyy>
+            <izz>0.1</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <cylinder>
+              <radius>0.25</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <cylinder>
+              <radius>0.2</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Green</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+      <plugin name="planar_move" filename="libgazebo_ros_planar_move.so">
+        <commandTopic>cylinder4_clone_0/cmd_vel</commandTopic>
+        <odometryTopic>cylinder4_clone_0/odom</odometryTopic>
+        <odometryFrame>cylinder4_clone_0/odom</odometryFrame>
+        <robotBaseFrame>link</robotBaseFrame>
+        <updateRate>100</updateRate>
+      </plugin>
+    </model>
+    <model name="cylinder4_clone_1">
+      <pose>-2.9345999999999997 -3.0238499999999995 1.5 0.0 -0.0 0.0</pose>
+      <static>0</static>
+      <link name="link">
+        <inertial>
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.1</ixx>
+            <iyy>0.1</iyy>
+            <izz>0.1</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <cylinder>
+              <radius>0.25</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <cylinder>
+              <radius>0.2</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Green</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+      <plugin name="planar_move" filename="libgazebo_ros_planar_move.so">
+        <commandTopic>cylinder4_clone_1/cmd_vel</commandTopic>
+        <odometryTopic>cylinder4_clone_1/odom</odometryTopic>
+        <odometryFrame>cylinder4_clone_1/odom</odometryFrame>
+        <robotBaseFrame>link</robotBaseFrame>
+        <updateRate>100</updateRate>
+      </plugin>
+    </model>
+    <model name="cylinder4_clone_10">
+      <pose>10.50975 -6.0262649999999995 1.5 0.0 -0.0 0.0</pose>
+      <static>0</static>
+      <link name="link">
+        <inertial>
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.1</ixx>
+            <iyy>0.1</iyy>
+            <izz>0.1</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <cylinder>
+              <radius>0.25</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <cylinder>
+              <radius>0.2</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Green</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+      <plugin name="planar_move" filename="libgazebo_ros_planar_move.so">
+        <commandTopic>cylinder4_clone_10/cmd_vel</commandTopic>
+        <odometryTopic>cylinder4_clone_10/odom</odometryTopic>
+        <odometryFrame>cylinder4_clone_10/odom</odometryFrame>
+        <robotBaseFrame>link</robotBaseFrame>
+        <updateRate>100</updateRate>
+      </plugin>
+    </model>
+    <model name="cylinder4_clone_11">
+      <pose>13.5981 0.1249005 1.5 0.0 -0.0 0.0</pose>
+      <static>0</static>
+      <link name="link">
+        <inertial>
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.1</ixx>
+            <iyy>0.1</iyy>
+            <izz>0.1</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <cylinder>
+              <radius>0.25</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <cylinder>
+              <radius>0.2</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Green</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+      <plugin name="planar_move" filename="libgazebo_ros_planar_move.so">
+        <commandTopic>cylinder4_clone_11/cmd_vel</commandTopic>
+        <odometryTopic>cylinder4_clone_11/odom</odometryTopic>
+        <odometryFrame>cylinder4_clone_11/odom</odometryFrame>
+        <robotBaseFrame>link</robotBaseFrame>
+        <updateRate>100</updateRate>
+      </plugin>
+    </model>
+    <model name="cylinder4_clone_12">
+      <pose>13.634400000000001 -4.36731 1.5 0.0 -0.0 0.0</pose>
+      <static>0</static>
+      <link name="link">
+        <inertial>
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.1</ixx>
+            <iyy>0.1</iyy>
+            <izz>0.1</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <cylinder>
+              <radius>0.25</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <cylinder>
+              <radius>0.2</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Green</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+      <plugin name="planar_move" filename="libgazebo_ros_planar_move.so">
+        <commandTopic>cylinder4_clone_12/cmd_vel</commandTopic>
+        <odometryTopic>cylinder4_clone_12/odom</odometryTopic>
+        <odometryFrame>cylinder4_clone_12/odom</odometryFrame>
+        <robotBaseFrame>link</robotBaseFrame>
+        <updateRate>100</updateRate>
+      </plugin>
+    </model>
+    <model name="cylinder4_clone_13">
+      <pose>4.517025 -3.057765 1.5 0.0 -0.0 0.0</pose>
+      <static>0</static>
+      <link name="link">
+        <inertial>
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.1</ixx>
+            <iyy>0.1</iyy>
+            <izz>0.1</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <cylinder>
+              <radius>0.25</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <cylinder>
+              <radius>0.2</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Green</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+      <plugin name="planar_move" filename="libgazebo_ros_planar_move.so">
+        <commandTopic>cylinder4_clone_13/cmd_vel</commandTopic>
+        <odometryTopic>cylinder4_clone_13/odom</odometryTopic>
+        <odometryFrame>cylinder4_clone_13/odom</odometryFrame>
+        <robotBaseFrame>link</robotBaseFrame>
+        <updateRate>100</updateRate>
+      </plugin>
+    </model>
+    <model name="cylinder4_clone_14">
+      <pose>3.0400650000000002 7.66752 1.5 0.0 -0.0 0.0</pose>
+      <static>0</static>
+      <link name="link">
+        <inertial>
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.1</ixx>
+            <iyy>0.1</iyy>
+            <izz>0.1</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <cylinder>
+              <radius>0.25</radius>
+              <length>2.0</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <cylinder>
+              <radius>0.4</radius>
+              <length>2.0</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Yellow</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+      <plugin name="planar_move" filename="libgazebo_ros_planar_move.so">
+        <commandTopic>cylinder4_clone_14/cmd_vel</commandTopic>
+        <odometryTopic>cylinder4_clone_14/odom</odometryTopic>
+        <odometryFrame>cylinder4_clone_14/odom</odometryFrame>
+        <robotBaseFrame>link</robotBaseFrame>
+        <updateRate>100</updateRate>
+      </plugin>
+    </model>
+    <model name="cylinder4_clone_15">
+      <pose>3.0400650000000002 7.66752 1.5 0.0 -0.0 0.0</pose>
+      <static>0</static>
+      <link name="link">
+        <inertial>
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.1</ixx>
+            <iyy>0.1</iyy>
+            <izz>0.1</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <cylinder>
+              <radius>0.25</radius>
+              <length>2.0</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <cylinder>
+              <radius>0.4</radius>
+              <length>2.0</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Yellow</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+      <plugin name="planar_move" filename="libgazebo_ros_planar_move.so">
+        <commandTopic>cylinder4_clone_15/cmd_vel</commandTopic>
+        <odometryTopic>cylinder4_clone_15/odom</odometryTopic>
+        <odometryFrame>cylinder4_clone_15/odom</odometryFrame>
+        <robotBaseFrame>link</robotBaseFrame>
+        <updateRate>100</updateRate>
+      </plugin>
+    </model>
+    <model name="cylinder4_clone_16">
+      <pose>-1.50477 -5.886794999999999 1.5 0.0 -0.0 0.0</pose>
+      <static>0</static>
+      <link name="link">
+        <inertial>
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.1</ixx>
+            <iyy>0.1</iyy>
+            <izz>0.1</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <cylinder>
+              <radius>0.25</radius>
+              <length>2.0</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <cylinder>
+              <radius>0.4</radius>
+              <length>2.0</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Yellow</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+      <plugin name="planar_move" filename="libgazebo_ros_planar_move.so">
+        <commandTopic>cylinder4_clone_16/cmd_vel</commandTopic>
+        <odometryTopic>cylinder4_clone_16/odom</odometryTopic>
+        <odometryFrame>cylinder4_clone_16/odom</odometryFrame>
+        <robotBaseFrame>link</robotBaseFrame>
+        <updateRate>100</updateRate>
+      </plugin>
+    </model>
+    <model name="cylinder4_clone_17">
+      <pose>-5.96331 -5.84304 1.5 0.0 -0.0 0.0</pose>
+      <static>0</static>
+      <link name="link">
+        <inertial>
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.1</ixx>
+            <iyy>0.1</iyy>
+            <izz>0.1</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <cylinder>
+              <radius>0.25</radius>
+              <length>2.0</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <cylinder>
+              <radius>0.4</radius>
+              <length>2.0</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Yellow</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+      <plugin name="planar_move" filename="libgazebo_ros_planar_move.so">
+        <commandTopic>cylinder4_clone_17/cmd_vel</commandTopic>
+        <odometryTopic>cylinder4_clone_17/odom</odometryTopic>
+        <odometryFrame>cylinder4_clone_17/odom</odometryFrame>
+        <robotBaseFrame>link</robotBaseFrame>
+        <updateRate>100</updateRate>
+      </plugin>
+    </model>
+    <model name="cylinder4_clone_18">
+      <pose>-6.01797 -1.351089 1.5 0.0 -0.0 0.0</pose>
+      <static>0</static>
+      <link name="link">
+        <inertial>
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.1</ixx>
+            <iyy>0.1</iyy>
+            <izz>0.1</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <cylinder>
+              <radius>0.25</radius>
+              <length>2.0</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <cylinder>
+              <radius>0.4</radius>
+              <length>2.0</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Yellow</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+      <plugin name="planar_move" filename="libgazebo_ros_planar_move.so">
+        <commandTopic>cylinder4_clone_18/cmd_vel</commandTopic>
+        <odometryTopic>cylinder4_clone_18/odom</odometryTopic>
+        <odometryFrame>cylinder4_clone_18/odom</odometryFrame>
+        <robotBaseFrame>link</robotBaseFrame>
+        <updateRate>100</updateRate>
+      </plugin>
+    </model>
+    <model name="cylinder4_clone_19">
+      <pose>-5.99697 6.4283850000000005 1.5 0.0 -0.0 0.0</pose>
+      <static>0</static>
+      <link name="link">
+        <inertial>
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.1</ixx>
+            <iyy>0.1</iyy>
+            <izz>0.1</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <cylinder>
+              <radius>0.25</radius>
+              <length>2.0</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <cylinder>
+              <radius>0.4</radius>
+              <length>2.0</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Yellow</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+      <plugin name="planar_move" filename="libgazebo_ros_planar_move.so">
+        <commandTopic>cylinder4_clone_19/cmd_vel</commandTopic>
+        <odometryTopic>cylinder4_clone_19/odom</odometryTopic>
+        <odometryFrame>cylinder4_clone_19/odom</odometryFrame>
+        <robotBaseFrame>link</robotBaseFrame>
+        <updateRate>100</updateRate>
+      </plugin>
+    </model>
+    <model name="cylinder4_clone_3">
+      <pose>-0.032205 -3.0 1.5 0.0 -0.0 0.0</pose>
+      <static>0</static>
+      <link name="link">
+        <inertial>
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.1</ixx>
+            <iyy>0.1</iyy>
+            <izz>0.1</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <cylinder>
+              <radius>0.25</radius>
+              <length>2.0</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <cylinder>
+              <radius>0.4</radius>
+              <length>2.0</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Yellow</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+      <plugin name="planar_move" filename="libgazebo_ros_planar_move.so">
+        <commandTopic>cylinder4_clone_3/cmd_vel</commandTopic>
+        <odometryTopic>cylinder4_clone_3/odom</odometryTopic>
+        <odometryFrame>cylinder4_clone_3/odom</odometryFrame>
+        <robotBaseFrame>link</robotBaseFrame>
+        <updateRate>100</updateRate>
+      </plugin>
+    </model>
+    <model name="cylinder4_clone_4">
+      <pose>2.87292 2.990745 1.5 0.0 -0.0 0.0</pose>
+      <static>0</static>
+      <link name="link">
+        <inertial>
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.1</ixx>
+            <iyy>0.1</iyy>
+            <izz>0.1</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <cylinder>
+              <radius>0.25</radius>
+              <length>2.0</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <cylinder>
+              <radius>0.4</radius>
+              <length>2.0</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Yellow</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+      <plugin name="planar_move" filename="libgazebo_ros_planar_move.so">
+        <commandTopic>cylinder4_clone_4/cmd_vel</commandTopic>
+        <odometryTopic>cylinder4_clone_4/odom</odometryTopic>
+        <odometryFrame>cylinder4_clone_4/odom</odometryFrame>
+        <robotBaseFrame>link</robotBaseFrame>
+        <updateRate>100</updateRate>
+      </plugin>
+    </model>
+    <model name="cylinder4_clone_5">
+      <pose>5.97237 5.95974 1.5 0.0 -0.0 0.0</pose>
+      <static>0</static>
+      <link name="link">
+        <inertial>
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.1</ixx>
+            <iyy>0.1</iyy>
+            <izz>0.1</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <cylinder>
+              <radius>0.25</radius>
+              <length>2.0</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <cylinder>
+              <radius>0.4</radius>
+              <length>2.0</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Yellow</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+      <plugin name="planar_move" filename="libgazebo_ros_planar_move.so">
+        <commandTopic>cylinder4_clone_5/cmd_vel</commandTopic>
+        <odometryTopic>cylinder4_clone_5/odom</odometryTopic>
+        <odometryFrame>cylinder4_clone_5/odom</odometryFrame>
+        <robotBaseFrame>link</robotBaseFrame>
+        <updateRate>100</updateRate>
+      </plugin>
+    </model>
+    <model name="cylinder3_clone">
+      <pose>9.109304999999999 0.20382 1.5 0.0 -0.0 0.0</pose>
+      <static>0</static>
+      <link name="link">
+        <inertial>
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.1</ixx>
+            <iyy>0.1</iyy>
+            <izz>0.1</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <cylinder>
+              <radius>0.25</radius>
+              <length>2.0</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <cylinder>
+              <radius>0.4</radius>
+              <length>2.0</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Yellow</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+      <plugin name="planar_move" filename="libgazebo_ros_planar_move.so">
+        <commandTopic>cylinder3_clone/cmd_vel</commandTopic>
+        <odometryTopic>cylinder3_clone/odom</odometryTopic>
+        <odometryFrame>cylinder3_clone/odom</odometryFrame>
+        <robotBaseFrame>link</robotBaseFrame>
+        <updateRate>100</updateRate>
+      </plugin>
+    </model>
+    <model name="cylinder3_clone_0">
+      <pose>6.22533 -6.097424999999999 1.5 0.0 -0.0 0.0</pose>
+      <static>0</static>
+      <link name="link">
+        <inertial>
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.1</ixx>
+            <iyy>0.1</iyy>
+            <izz>0.1</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <cylinder>
+              <radius>0.25</radius>
+              <length>2.0</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <cylinder>
+              <radius>0.4</radius>
+              <length>2.0</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Yellow</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+      <plugin name="planar_move" filename="libgazebo_ros_planar_move.so">
+        <commandTopic>cylinder3_clone_0/cmd_vel</commandTopic>
+        <odometryTopic>cylinder3_clone_0/odom</odometryTopic>
+        <odometryFrame>cylinder3_clone_0/odom</odometryFrame>
+        <robotBaseFrame>link</robotBaseFrame>
+        <updateRate>100</updateRate>
+      </plugin>
+    </model>
+    <model name="cylinder3_clone_1">
+      <pose>12.096675000000001 -1.43949 1.5 0.0 -0.0 0.0</pose>
+      <static>0</static>
+      <link name="link">
+        <inertial>
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.1</ixx>
+            <iyy>0.1</iyy>
+            <izz>0.1</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <cylinder>
+              <radius>0.25</radius>
+              <length>2.0</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <cylinder>
+              <radius>0.4</radius>
+              <length>2.0</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Yellow</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+      <plugin name="planar_move" filename="libgazebo_ros_planar_move.so">
+        <commandTopic>cylinder3_clone_1/cmd_vel</commandTopic>
+        <odometryTopic>cylinder3_clone_1/odom</odometryTopic>
+        <odometryFrame>cylinder3_clone_1/odom</odometryFrame>
+        <robotBaseFrame>link</robotBaseFrame>
+        <updateRate>100</updateRate>
+      </plugin>
+    </model>
+    <model name="cylinder3_clone_10">
+      <pose>4.5501450000000006 -10.3641 1.5 0.0 -0.0 0.0</pose>
+      <static>0</static>
+      <link name="link">
+        <inertial>
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.1</ixx>
+            <iyy>0.1</iyy>
+            <izz>0.1</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <cylinder>
+              <radius>0.25</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <cylinder>
+              <radius>0.2</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Green</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+      <plugin name="planar_move" filename="libgazebo_ros_planar_move.so">
+        <commandTopic>cylinder3_clone_10/cmd_vel</commandTopic>
+        <odometryTopic>cylinder3_clone_10/odom</odometryTopic>
+        <odometryFrame>cylinder3_clone_10/odom</odometryFrame>
+        <robotBaseFrame>link</robotBaseFrame>
+        <updateRate>100</updateRate>
+      </plugin>
+    </model>
+    <model name="cylinder3_clone_11">
+      <pose>-1.461675 -8.708309999999999 1.5 0.0 -0.0 0.0</pose>
+      <static>0</static>
+      <link name="link">
+        <inertial>
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.1</ixx>
+            <iyy>0.1</iyy>
+            <izz>0.1</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <cylinder>
+              <radius>0.25</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <cylinder>
+              <radius>0.2</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Green</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+      <plugin name="planar_move" filename="libgazebo_ros_planar_move.so">
+        <commandTopic>cylinder3_clone_11/cmd_vel</commandTopic>
+        <odometryTopic>cylinder3_clone_11/odom</odometryTopic>
+        <odometryFrame>cylinder3_clone_11/odom</odometryFrame>
+        <robotBaseFrame>link</robotBaseFrame>
+        <updateRate>100</updateRate>
+      </plugin>
+    </model>
+    <model name="cylinder3_clone_12">
+      <pose>-4.56357 -9.023715 1.5 0.0 -0.0 0.0</pose>
+      <static>0</static>
+      <link name="link">
+        <inertial>
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.1</ixx>
+            <iyy>0.1</iyy>
+            <izz>0.1</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <cylinder>
+              <radius>0.25</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <cylinder>
+              <radius>0.2</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Green</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+      <plugin name="planar_move" filename="libgazebo_ros_planar_move.so">
+        <commandTopic>cylinder3_clone_12/cmd_vel</commandTopic>
+        <odometryTopic>cylinder3_clone_12/odom</odometryTopic>
+        <odometryFrame>cylinder3_clone_12/odom</odometryFrame>
+        <robotBaseFrame>link</robotBaseFrame>
+        <updateRate>100</updateRate>
+      </plugin>
+    </model>
+    <model name="cylinder3_clone_13">
+      <pose>-7.468995 -7.53885 1.5 0.0 -0.0 0.0</pose>
+      <static>0</static>
+      <link name="link">
+        <inertial>
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.1</ixx>
+            <iyy>0.1</iyy>
+            <izz>0.1</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <cylinder>
+              <radius>0.25</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <cylinder>
+              <radius>0.2</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Green</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+      <plugin name="planar_move" filename="libgazebo_ros_planar_move.so">
+        <commandTopic>cylinder3_clone_13/cmd_vel</commandTopic>
+        <odometryTopic>cylinder3_clone_13/odom</odometryTopic>
+        <odometryFrame>cylinder3_clone_13/odom</odometryFrame>
+        <robotBaseFrame>link</robotBaseFrame>
+        <updateRate>100</updateRate>
+      </plugin>
+    </model>
+    <model name="cylinder3_clone_14">
+      <pose>8.951355 7.506825 1.5 0.0 -0.0 0.0</pose>
+      <static>0</static>
+      <link name="link">
+        <inertial>
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.1</ixx>
+            <iyy>0.1</iyy>
+            <izz>0.1</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <cylinder>
+              <radius>0.25</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <cylinder>
+              <radius>0.2</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Green</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+      <plugin name="planar_move" filename="libgazebo_ros_planar_move.so">
+        <commandTopic>cylinder3_clone_14/cmd_vel</commandTopic>
+        <odometryTopic>cylinder3_clone_14/odom</odometryTopic>
+        <odometryFrame>cylinder3_clone_14/odom</odometryFrame>
+        <robotBaseFrame>link</robotBaseFrame>
+        <updateRate>100</updateRate>
+      </plugin>
+    </model>
+    <model name="cylinder3_clone_2">
+      <pose>10.52862 -2.912265 1.5 0.0 -0.0 0.0</pose>
+      <static>0</static>
+      <link name="link">
+        <inertial>
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.1</ixx>
+            <iyy>0.1</iyy>
+            <izz>0.1</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <cylinder>
+              <radius>0.25</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <cylinder>
+              <radius>0.2</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Green</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+      <plugin name="planar_move" filename="libgazebo_ros_planar_move.so">
+        <commandTopic>cylinder3_clone_2/cmd_vel</commandTopic>
+        <odometryTopic>cylinder3_clone_2/odom</odometryTopic>
+        <odometryFrame>cylinder3_clone_2/odom</odometryFrame>
+        <robotBaseFrame>link</robotBaseFrame>
+        <updateRate>100</updateRate>
+      </plugin>
+    </model>
+    <model name="cylinder3_clone_3">
+      <pose>3.0338249999999998 -6.002235000000001 1.5 0.0 -0.0 0.0</pose>
+      <static>0</static>
+      <link name="link">
+        <inertial>
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.1</ixx>
+            <iyy>0.1</iyy>
+            <izz>0.1</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <cylinder>
+              <radius>0.25</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <cylinder>
+              <radius>0.2</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Green</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+      <plugin name="planar_move" filename="libgazebo_ros_planar_move.so">
+        <commandTopic>cylinder3_clone_3/cmd_vel</commandTopic>
+        <odometryTopic>cylinder3_clone_3/odom</odometryTopic>
+        <odometryFrame>cylinder3_clone_3/odom</odometryFrame>
+        <robotBaseFrame>link</robotBaseFrame>
+        <updateRate>100</updateRate>
+      </plugin>
+    </model>
+    <model name="cylinder3_clone_4">
+      <pose>0.26809499999999997 3.0858600000000003 1.5 0.0 -0.0 0.0</pose>
+      <static>0</static>
+      <link name="link">
+        <inertial>
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.1</ixx>
+            <iyy>0.1</iyy>
+            <izz>0.1</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <cylinder>
+              <radius>0.25</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <cylinder>
+              <radius>0.2</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Green</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+      <plugin name="planar_move" filename="libgazebo_ros_planar_move.so">
+        <commandTopic>cylinder3_clone_4/cmd_vel</commandTopic>
+        <odometryTopic>cylinder3_clone_4/odom</odometryTopic>
+        <odometryFrame>cylinder3_clone_4/odom</odometryFrame>
+        <robotBaseFrame>link</robotBaseFrame>
+        <updateRate>100</updateRate>
+      </plugin>
+    </model>
+    <model name="cylinder3_clone_5">
+      <pose>-2.7859350000000003 3.1466700000000003 1.5 0.0 -0.0 0.0</pose>
+      <static>0</static>
+      <link name="link">
+        <inertial>
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.1</ixx>
+            <iyy>0.1</iyy>
+            <izz>0.1</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <cylinder>
+              <radius>0.25</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <cylinder>
+              <radius>0.2</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Green</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+      <plugin name="planar_move" filename="libgazebo_ros_planar_move.so">
+        <commandTopic>cylinder3_clone_5/cmd_vel</commandTopic>
+        <odometryTopic>cylinder3_clone_5/odom</odometryTopic>
+        <odometryFrame>cylinder3_clone_5/odom</odometryFrame>
+        <robotBaseFrame>link</robotBaseFrame>
+        <updateRate>100</updateRate>
+      </plugin>
+    </model>
+    <model name="cylinder3_clone_6">
+      <pose>-5.978775000000001 1.586865 1.5 0.0 -0.0 0.0</pose>
+      <static>0</static>
+      <link name="link">
+        <inertial>
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.1</ixx>
+            <iyy>0.1</iyy>
+            <izz>0.1</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <cylinder>
+              <radius>0.25</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <cylinder>
+              <radius>0.2</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Green</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+      <plugin name="planar_move" filename="libgazebo_ros_planar_move.so">
+        <commandTopic>cylinder3_clone_6/cmd_vel</commandTopic>
+        <odometryTopic>cylinder3_clone_6/odom</odometryTopic>
+        <odometryFrame>cylinder3_clone_6/odom</odometryFrame>
+        <robotBaseFrame>link</robotBaseFrame>
+        <updateRate>100</updateRate>
+      </plugin>
+    </model>
+    <model name="cylinder3_clone_7">
+      <pose>9.084719999999999 -8.81592 1.5 0.0 -0.0 0.0</pose>
+      <static>0</static>
+      <link name="link">
+        <inertial>
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.1</ixx>
+            <iyy>0.1</iyy>
+            <izz>0.1</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <cylinder>
+              <radius>0.25</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <cylinder>
+              <radius>0.2</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Green</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+      <plugin name="planar_move" filename="libgazebo_ros_planar_move.so">
+        <commandTopic>cylinder3_clone_7/cmd_vel</commandTopic>
+        <odometryTopic>cylinder3_clone_7/odom</odometryTopic>
+        <odometryFrame>cylinder3_clone_7/odom</odometryFrame>
+        <robotBaseFrame>link</robotBaseFrame>
+        <updateRate>100</updateRate>
+      </plugin>
+    </model>
+    <model name="cylinder3_clone_8">
+      <pose>6.185625 -8.857875 1.5 0.0 -0.0 0.0</pose>
+      <static>0</static>
+      <link name="link">
+        <inertial>
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.1</ixx>
+            <iyy>0.1</iyy>
+            <izz>0.1</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <cylinder>
+              <radius>0.25</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <cylinder>
+              <radius>0.2</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Green</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+      <plugin name="planar_move" filename="libgazebo_ros_planar_move.so">
+        <commandTopic>cylinder3_clone_8/cmd_vel</commandTopic>
+        <odometryTopic>cylinder3_clone_8/odom</odometryTopic>
+        <odometryFrame>cylinder3_clone_8/odom</odometryFrame>
+        <robotBaseFrame>link</robotBaseFrame>
+        <updateRate>100</updateRate>
+      </plugin>
+    </model>
+    <model name="cylinder3_clone_9">
+      <pose>1.552785 -8.69556 1.5 0.0 -0.0 0.0</pose>
+      <static>0</static>
+      <link name="link">
+        <inertial>
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.1</ixx>
+            <iyy>0.1</iyy>
+            <izz>0.1</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <cylinder>
+              <radius>0.25</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <cylinder>
+              <radius>0.2</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Green</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+      <plugin name="planar_move" filename="libgazebo_ros_planar_move.so">
+        <commandTopic>cylinder3_clone_9/cmd_vel</commandTopic>
+        <odometryTopic>cylinder3_clone_9/odom</odometryTopic>
+        <odometryFrame>cylinder3_clone_9/odom</odometryFrame>
+        <robotBaseFrame>link</robotBaseFrame>
+        <updateRate>100</updateRate>
+      </plugin>
+    </model>
+  </world>
+</sdf>

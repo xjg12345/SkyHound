@@ -1,0 +1,34 @@
+<launch>
+  <arg name="dog"/>
+  <arg name="guard_scan" default="scan"/>
+  <arg name="guard_odom" default="odom"/>
+  <arg name="bridge_scan" default="false"/>
+  <arg name="agent_backend" default="proxy"/>
+  <arg name="physical" value="$(eval arg('agent_backend') == 'physical')"/>
+  <arg name="laser_z" value="$(eval 0.12 if arg('physical') else 0.19)"/>
+  <group ns="$(arg dog)">
+    <node pkg="tf2_ros" type="static_transform_publisher" name="map_to_odom"
+          args="0 0 0 0 0 0 dog_map $(arg dog)/odom"/>
+    <node unless="$(arg physical)" pkg="tf2_ros" type="static_transform_publisher" name="footprint_to_base"
+          args="0 0 0.13 0 0 0 $(arg dog)/base_footprint $(arg dog)/base_link"/>
+    <node pkg="tf2_ros" type="static_transform_publisher" name="base_to_laser"
+          args="0 0 $(arg laser_z) 0 0 0 $(arg dog)/base_link $(arg dog)/laser_link"/>
+    <node pkg="prometheus_quadruped_sim" type="velocity_guard.py" name="velocity_guard" output="screen">
+      <param name="dog" value="$(arg dog)"/>
+      <param name="bridge_scan" value="$(arg bridge_scan)"/>
+      <param name="physical" value="$(arg physical)"/>
+      <remap from="scan_input" to="$(arg guard_scan)"/>
+      <remap from="odom" to="$(arg guard_odom)"/>
+    </node>
+    <node pkg="move_base" type="move_base" name="move_base" required="true" output="screen">
+      <rosparam command="load" file="$(find prometheus_quadruped_sim)/config/navigation.yaml"/>
+      <rosparam if="$(arg physical)" command="load" file="$(find prometheus_quadruped_sim)/config/physical_navigation.yaml"/>
+      <param name="DWAPlannerROS/odom_topic" value="/$(arg dog)/odom"/>
+      <param name="global_costmap/robot_base_frame" value="$(arg dog)/base_footprint"/>
+      <param name="local_costmap/global_frame" value="$(arg dog)/odom"/>
+      <param name="local_costmap/robot_base_frame" value="$(arg dog)/base_footprint"/>
+      <param name="local_costmap/obstacles/laser/topic" value="/$(arg dog)/nav_scan"/>
+      <remap from="cmd_vel" to="cmd_vel_nav"/>
+    </node>
+  </group>
+</launch>

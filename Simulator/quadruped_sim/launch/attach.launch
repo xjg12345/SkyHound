@@ -1,0 +1,21 @@
+<launch>
+  <arg name="robot_count" default="4"/>
+  <arg name="agent_backend" default="proxy"/>
+  <arg name="a1_mesh_dir" default=""/>
+  <arg name="rviz" default="false"/>
+  <arg name="uav_model" default="p450_D435i_0"/>
+  <arg name="world" default="$(find prometheus_gazebo)/gazebo_worlds/planning_worlds/planning_easy.world"/>
+  <arg name="map_yaml" default="$(find prometheus_quadruped_sim)/config/planning_easy.yaml"/>
+  <include file="$(find prometheus_quadruped_sim)/launch/team.launch">
+    <arg name="robot_count" value="$(arg robot_count)"/>
+    <arg name="agent_backend" value="$(arg agent_backend)"/>
+    <arg name="bridge_scan" value="true"/>
+    <arg name="guard_scan" value="scan_sim"/>
+  </include>
+  <node pkg="prometheus_quadruped_sim" type="bringup.py" name="quadruped_bringup" required="true"
+        output="screen" args="--world '$(arg world)' --map-yaml '$(arg map_yaml)'
+        --dog '$(find prometheus_quadruped_sim)/models/dog.sdf' --robot-count $(arg robot_count)
+        --uav '$(arg uav_model)' --backend $(arg agent_backend) --a1-mesh-dir='$(arg a1_mesh_dir)'"/>
+  <node if="$(arg rviz)" pkg="rviz" type="rviz" name="dog_rviz"
+        args="-d $(find prometheus_quadruped_sim)/config/team.rviz"/>
+</launch>

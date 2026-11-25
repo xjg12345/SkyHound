@@ -1,0 +1,10 @@
+<sdf version="1.6">
+  <model name="crossing">
+    <link name="box">
+      <inertial><pose>0 0 0.35 0 0 0</pose><mass>15</mass><inertia><ixx>1</ixx><iyy>1</iyy><izz>1</izz></inertia></inertial>
+      <collision name="box"><pose>0 0 0.35 0 0 0</pose><geometry><box><size>0.65 0.65 0.70</size></box></geometry><surface><friction><ode><mu>0.03</mu><mu2>0.03</mu2></ode></friction></surface></collision>
+      <visual name="box"><pose>0 0 0.35 0 0 0</pose><geometry><box><size>0.65 0.65 0.70</size></box></geometry><material><ambient>0.8 0.28 0.08 1</ambient><diffuse>0.8 0.28 0.08 1</diffuse></material></visual>
+    </link>
+    <plugin name="crossing_drive" filename="libquadruped_proxy.so"><robotNamespace>crossing</robotNamespace><publishOdometry>false</publishOdometry></plugin>
+  </model>
+</sdf>

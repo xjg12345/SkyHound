@@ -1,0 +1,19 @@
+<launch>
+  <arg name="world" default="$(find prometheus_gazebo)/gazebo_worlds/planning_worlds/planning_easy.world"/>
+  <arg name="vehicle" default="p450_D435i"/>
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(arg world)"/>
+    <arg name="use_sim_time" value="false"/>
+    <arg name="gui" value="false"/>
+    <arg name="server_required" value="true"/>
+  </include>
+  <include file="$(find prometheus_gazebo)/launch_uav_with_sensor/sitl_p450_d435i.launch">
+    <arg name="vehicle" value="$(arg vehicle)"/>
+    <arg name="world" value="$(arg world)"/>
+    <arg name="gazebo_enable" value="false"/>
+    <arg name="rviz_enable" value="false"/>
+  </include>
+  <include file="$(find prometheus_uav_control)/launch/uav_control_main_outdoor.launch"/>
+  <include file="$(find prometheus_gazebo)/launch_uav_with_sensor/depth_to_octomap.launch"/>
+  <include file="$(find ego_planner)/launch_for_prometheus/sitl_ego_planner_basic_octomap.launch"/>
+</launch>

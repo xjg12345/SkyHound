@@ -1,0 +1,138 @@
+# ============================================================
+# Prometheus .gitignore
+# 原则：只忽略「本机生成 / 可由源码或脚本重新生成 / 只与本机环境相关」的文件，
+#       不忽略任何参与编译、运行、配置、模型加载所必需的源码与资源。
+# ============================================================
+
+# ---------------- 1. 编译与构建产物 ----------------
+__pycache__/
+*.py[cod]
+_ext/
+nano.save
+
+# catkin / cmake 构建空间（catkin_make 的输出）
+.catkin_workspace
+.catkin_tools/
+build/
+devel/
+devel_*/
+install/
+logs/
+CMakeCache.txt
+CMakeFiles/
+cmake-build-*/
+compile_commands.json
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+ccache/
+.ccache/
+
+# ---------------- 2. ROS 运行时数据 ----------------
+# roslaunch / roscore / rviz 的本机日志与缓存
+.ros/
+.ros_log/
+# 录制与建图产生的数据
+*.bag
+*.bag.active
+*.db3
+rosbag2_*/
+*.pcd
+
+# ---------------- 3. AirSim / Visual Studio(MSVC) 中间产物 ----------------
+# airsim_ros 在 Windows 下用 VS 打开时会生成，Linux 下由 catkin 直接编译 AirLib 源码
+Simulator/airsim_simulator/airsim_ros/**/temp/
+Simulator/airsim_simulator/airsim_ros/**/x64/
+Simulator/airsim_simulator/airsim_ros/**/ipch/
+Simulator/airsim_simulator/airsim_ros/**/*.lib
+*.obj
+*.sbr
+*.bsc
+*.ilk
+*.pdb
+*.idb
+*.iobj
+*.ipdb
+*.tlog
+*.lastbuildstate
+*.recipe
+*.tlh
+*.tli
+*.exp
+*.suo
+*.user
+*.aps
+*.ncb
+*.opensdf
+*.VC.db
+*.VC.opendb
+.vs/
+
+# ---------------- 4. Python / 数据集 / 模型权重 ----------------
+*.pkl
+*.npy
+# ipython/jupyter 与调试笔记本
+*.ipynb
+**/.ipynb_checkpoints/
+# 训练/推理权重与导出模型：体积大，按需自行下载或训练
+*.onnx
+*.engine
+*.trt
+*.weights
+*.pth
+*.pt
+*.ckpt
+*.h5
+*.tflite
+# 工程内约定的大体积资源目录
+/datasets
+/models
+ORBvoc.txt
+
+# ---------------- 5. 日志与临时文件 ----------------
+*.log
+*.tmp
+*.temp
+*.bak
+*.orig
+*.rej
+*.old
+core
+core.*
+*.stackdump
+
+# ---------------- 6. 编辑器临时文件与 IDE 配置 ----------------
+*.swp
+*.swo
+*.swn
+*~
+.idea/
+.vscode/
+.history/
+*.autosave
+
+# ---------------- 7. 操作系统残留文件 ----------------
+.DS_Store
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# ---------------- 8. 本工程内不需要入库的目录 ----------------
+/.gazebo/
+/.screenshots/
+
+# ---------------- 9. 原有规则（保持兼容，勿随意删除） ----------------
+dist/
+Modules/object_detection_landing/
+Modules/object_detection_persistence/
+Modules/object_detection_yolov5openvino/
+Modules/object_detection_yolov5tensorrt/
+Modules/object_detection_circlex/
+Modules/data/
+Modules/object_detection_oneshot/
+Modules/object_detection/py_nodes/yolov5_tensorrt_server/build/
+Modules/common/CMakeLists.txt
+Modules/ego_planner_swarm/CMakeLists.txt
+Modules/motion_planning/CMakeLists.txt
+Modules/simulator_utils/CMakeLists.txt
+Modules/FAST_LIO/Log/mat_pre.txt

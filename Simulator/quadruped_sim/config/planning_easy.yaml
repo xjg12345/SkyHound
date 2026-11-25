@@ -1,0 +1,9 @@
+# Rasterize the collision cylinders from the matching planning_easy.world.
+origin: [-13.0, -14.0]
+size: [34.0, 28.0]
+resolution: 0.10
+spawn:
+  - [-10.5, -4.4, 0.0]
+  - [-10.5, -2.2, 0.0]
+  - [-10.5, 0.4, 0.0]
+  - [-10.5, 4.7, 0.0]

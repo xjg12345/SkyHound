@@ -1,0 +1,21 @@
+<launch>
+  <arg name="robot_count"/>
+  <arg name="agent_backend" default="proxy"/>
+  <arg name="bridge_scan" default="false"/>
+  <arg name="guard_scan" default="scan"/>
+  <arg name="guard_odom" default="odom"/>
+  <include file="$(find prometheus_quadruped_sim)/launch/dog_bringup.launch" pass_all_args="true">
+    <arg name="dog" value="dog1"/>
+  </include>
+  <group if="$(eval int(arg('robot_count')) == 4)">
+    <include file="$(find prometheus_quadruped_sim)/launch/dog_bringup.launch" pass_all_args="true">
+      <arg name="dog" value="dog2"/>
+    </include>
+    <include file="$(find prometheus_quadruped_sim)/launch/dog_bringup.launch" pass_all_args="true">
+      <arg name="dog" value="dog3"/>
+    </include>
+    <include file="$(find prometheus_quadruped_sim)/launch/dog_bringup.launch" pass_all_args="true">
+      <arg name="dog" value="dog4"/>
+    </include>
+  </group>
+</launch>
